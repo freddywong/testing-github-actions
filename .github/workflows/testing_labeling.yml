@@ -1,6 +1,6 @@
 name: Label Pull Requests
 on:
-  pull_requests:
+  pull_request:
     types:
       - reopened
       - opened
