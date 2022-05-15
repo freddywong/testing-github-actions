@@ -1,19 +1,15 @@
-name: issue-automation
-
+name: Label Pull Requests
 on:
-  issues:
-    types: [opened]
   pull_request:
     types: [opened]
-  project_card:
-    types: [moved]
-
 jobs:
-  automate-issues-labels:
+  label_pull_requests:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - name: initial labeling
-        uses: andymckay/labeler@master
+      - name: Label pull_requests
+        uses: andymckay/labeler@e6c4322d0397f3240f0e7e30a33b5c5df2d39e90
         with:
-          add-labels: "needs-triage, bug"
-          remove-labels: "in progress"
+          add-labels: "DO NOT MERGE"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
