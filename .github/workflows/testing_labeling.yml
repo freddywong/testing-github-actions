@@ -6,6 +6,8 @@ on:
 jobs:
   remove_do_not_merge_label:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read|write
     steps:
       - uses: andymckay/labeler@master
         with:
