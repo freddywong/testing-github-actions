@@ -2,7 +2,7 @@ name: Remove "DO NOT MERGE" label
 on:
   pull_request:
     types:
-      - opened
+      - converted_to_draft
 jobs:
   remove_do_not_merge_label:
     runs-on: ubuntu-latest
