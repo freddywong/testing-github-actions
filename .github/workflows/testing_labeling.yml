@@ -1,6 +1,6 @@
 name: remove label
 on:
-  pull_request_review:
+  pull_request:
     types:
       - converted_to_draft
 jobs:
