@@ -1,16 +1,17 @@
-name: Remove "DO NOT MERGE" label
+name: Label pull_requests
 on:
-  pull_request:
+  pull_requests:
     types:
+      - reopened
       - opened
 jobs:
-  remove_do_not_merge_label:
+  label_pull_requests:
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: write
+      pull_requests: write
     steps:
-      - name: remove-do-not-merge-label
-        uses: andymckay/labeler@1.0.4
+      - name: Label pull_requests
+        uses: andymckay/labeler@e6c4322d0397f3240f0e7e30a33b5c5df2d39e90
         with:
           add-labels: "DO NOT MERGE"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
