@@ -9,7 +9,8 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: andymckay/labeler@master
+      - name: remove-do-not-merge-label
+        uses: andymckay/labeler@1.0.4
         with:
           remove-labels: "DO NOT MERGE"
           repo-token: ${{ secrets.GITHUB_TOKEN }}
