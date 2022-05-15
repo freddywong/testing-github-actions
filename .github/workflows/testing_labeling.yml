@@ -8,7 +8,7 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@0.8.0
+      - uses: actions/github-script@6.0.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -18,3 +18,20 @@ jobs:
               repo: context.repo.repo,
               body: "🎉 You've created this issue comment using GitHub Script!!!"
             })
+name: Label issues
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+jobs:
+  label_issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Label issues
+        uses: andymckay/labeler@master
+        with:
+          add-labels: "DO NOT MERGE"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
