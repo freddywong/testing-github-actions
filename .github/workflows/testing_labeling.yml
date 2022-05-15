@@ -1,4 +1,4 @@
-name: Label pull_requests
+name: Label pull requests
 on:
   pull_requests:
     types:
