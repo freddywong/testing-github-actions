@@ -1,15 +1,16 @@
-name: Label Pull Requests
+name: remove label
 on:
-  pull_request:
-    types: [opened]
+  pull_request_review:
+    types:
+      - converted_to_draft
 jobs:
-  label_pull_requests:
+  remove_label:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
+    name: remove label
     steps:
-      - name: Label pull_requests
-        uses: andymckay/labeler@master
+      - name: removelabel
+        uses: buildsville/add-remove-label@v1
         with:
-          add-labels: "do not merge"
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{secrets.GITHUB_TOKEN}}
+          label: DO NOT MERGE
+          type: remove
